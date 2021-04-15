@@ -6,7 +6,7 @@ pin.setwarnings(False)
 
 class Motor():
 	
-	def __init__(self,lft1,lft2,rht1,rht2,lft_pwm,rht_pwm):
+	def __init__(self,lft1,lft2,lft_pwm,rht1,rht2,rht_pwm):
 		
 		self.lft1 = lft1
 		self.lft2 = lft2
@@ -28,7 +28,7 @@ class Motor():
 		self.lft_pwm.start(0)
 		self.rht_pwm.start(0)
 		
-	def motor_control(self, left_speed, right_speed)
+	def motor_control(self, left_speed, right_speed):
 		
 		if left_speed >= 0 :
 			pin.output(self.lft1, 1)
@@ -50,10 +50,10 @@ class Motor():
 		if right_speed < -100: right_speed = -100
 		
 		self.lft_pwm.ChangeDutyCycle(abs(left_speed))
-		self.rht_pw,.ChangeDutyCycle(abs(right_speed))
+		self.rht_pwm.ChangeDutyCycle(abs(right_speed))
 		
-if __name__ = '__main__':
-	motor = Motor(2,3,4,17,27,22)
+if __name__ == '__main__':
+	motor = Motor(4,17,27,22,10,9)
 	while True:
 		motor.motor_control(50,50)
 		sleep(10)

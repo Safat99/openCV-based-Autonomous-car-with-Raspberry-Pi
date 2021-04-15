@@ -61,6 +61,11 @@ def getLaneCurve(img,display=2):
    
 	elif display == 1:
 		cv2.imshow('Result',imgResult)
+		
+	#normalization
+	curve = curve / 100
+	if curve >1: curve =1
+	if curve <-1: curve =-1
 	
 	'''
 	cv2.imshow('Threshold', imgThresh)
@@ -85,8 +90,8 @@ if __name__ == '__main__':
 		
 		_, img = cap.read()
 		img = cv2.resize(img,(480,240))
-		getLaneCurve(img)
-		
+		curve = getLaneCurve(img,display=1)
+		print(curve)
 		cv2.imshow('frame', img)
 		k = cv2.waitKey(1) & 0xFF
 		if k == ord('q'):

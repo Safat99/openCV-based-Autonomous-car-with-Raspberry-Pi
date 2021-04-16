@@ -1,4 +1,4 @@
-import RPIO.GPIO as pin
+import RPi.GPIO as pin
 from time import sleep
 
 pin.setmode(pin.BCM)
@@ -30,19 +30,19 @@ class Motor():
 		
 	def motor_control(self, left_speed, right_speed):
 		
-		if left_speed >= 0 :
-			pin.output(self.lft1, 1)
-			pin.output(self.lft2, 0)
+		if left_speed > 0 :
+			pin.output(self.lft1, pin.LOW)
+			pin.output(self.lft2, pin.HIGH)
 		else:
-			pin.output(self.lft2, 1)
-			pin.output(self.lft1, 0)
+			pin.output(self.lft2, pin.LOW)
+			pin.output(self.lft1, pin.HIGH)
 		
-		if right_speed >= 0 :
-			pin.output(self.rht1, 1)
-			pin.output(self.rht2, 0)
+		if right_speed > 0 :
+			pin.output(self.rht1, pin.HIGH)
+			pin.output(self.rht2, pin.LOW)
 		else:
-			pin.output(self.rht2, 1)
-			pin.output(self.rht1, 0)
+			pin.output(self.rht2, pin.HIGH)
+			pin.output(self.rht1, pin.LOW)
 		
 		if left_speed > 100: left_speed =100
 		if left_speed < -100: left_speed = -100
@@ -53,7 +53,7 @@ class Motor():
 		self.rht_pwm.ChangeDutyCycle(abs(right_speed))
 		
 if __name__ == '__main__':
-	motor = Motor(4,17,27,22,10,9)
+	motor = Motor(17,4,27,22,10,9)
 	while True:
 		motor.motor_control(50,50)
 		sleep(10)

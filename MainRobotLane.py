@@ -4,23 +4,23 @@ import WebcamModule
 
 
 
-motor = Motor(4,17,27,22,10,9)
+motor = Motor(10,22,9,4,17,27)
 
-Kp = 30
+Kp = 20
 
 def main():
 	
 	img = WebcamModule.getImg()
-	curveVal = getLaneCurve(img,1)
+	curveVal = getLaneCurve(img,0)
 	
 	#controlling like PID's P control>>>with Kp
-	left_speed = 50 + Kp * curveVal
-	right_speed = 50 - Kp * curveVal
+	left_speed = 20 + Kp * curveVal
+	right_speed = 20 - Kp * curveVal
 	
-	if left_speed > 75: left_speed = 75
-	if left_speed < 25: left_speed = 25
-	if right_speed > 75: right_speed =75
-	if right_speed < 25: right_speed =25
+	if left_speed > 40: left_speed = 40
+	if left_speed < 0: left_speed = 0
+	if right_speed > 40: right_speed =40
+	if right_speed < 0: right_speed =0
 	
 	print(curveVal,left_speed, right_speed)
 	motor.motor_control(left_speed, right_speed)

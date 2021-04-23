@@ -11,7 +11,7 @@ Kp = 20
 def main():
 	
 	img = WebcamModule.getImg()
-	curveVal = getLaneCurve(img,0)
+	curveVal = getLaneCurve(img,1)
 	
 	#controlling like PID's P control>>>with Kp
 	left_speed = 20 + Kp * curveVal

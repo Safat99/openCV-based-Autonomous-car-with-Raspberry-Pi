@@ -7,7 +7,7 @@ def track(x):
 	pass
 
 cv2.namedWindow('HSV')
-cv2.resizeWindow('HSV' , 640, 240)
+cv2.resizeWindow('HSV' , 360, 240)
 cv2.createTrackbar('HUE Min', 'HSV', 0, 255, track)
 cv2.createTrackbar('HUE Max', 'HSV', 179, 179, track)
 cv2.createTrackbar('SAT Min', 'HSV', 0, 255, track)
@@ -15,7 +15,7 @@ cv2.createTrackbar('SAT Max', 'HSV', 255, 255, track)
 cv2.createTrackbar('VALUE Min', 'HSV', 0, 255, track)
 cv2.createTrackbar('VALUE Max', 'HSV', 255, 255, track)
 
-cap = cv2.VideoCapture('vid1.mp4')
+#cap = cv2.VideoCapture('vid1.mp4')
 frameCounter = 0
 
 while True:
@@ -25,6 +25,7 @@ while True:
 		frameCounter=0
 		
 	_,img = cap.read()
+	img = cv2.flip(img,0)
 	imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 	
 	h_min = cv2.getTrackbarPos('HUE Min', 'HSV')

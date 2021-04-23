@@ -25,4 +25,4 @@ def main(display=False):
 
 if __name__ == '__main__':
 	while True:
-		main(display=True)	
+		main()	

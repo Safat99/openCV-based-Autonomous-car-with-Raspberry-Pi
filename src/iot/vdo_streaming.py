@@ -8,8 +8,9 @@ def enter(q):
 def exit(w):
     sub.run(w)
 if __name__=='__main__':
-    en = mp.Process(target=enter,args=(["python3","MainRobotKeyboard.py"],))
-    ex = mp.Process(target=exit,args=(["python3","WebcamModule.py"],))
+    # Run keyboard control and camera preview concurrently as separate processes.
+    en = mp.Process(target=enter,args=(["python3","-m","src.iot.keyboard_control"],))
+    ex = mp.Process(target=exit,args=(["python3","-m","src.vision.camera"],))
     en.start()
     ex.start()
     en.join()

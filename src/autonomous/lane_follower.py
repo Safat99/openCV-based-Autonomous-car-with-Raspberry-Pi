@@ -1,6 +1,6 @@
-from motormodule import Motor
-from LaneDetectionModule import getLaneCurve
-import WebcamModule
+from src.hardware.motor import Motor
+from src.vision.lane_detection import getLaneCurve
+from src.vision import camera as WebcamModule
 
 
 

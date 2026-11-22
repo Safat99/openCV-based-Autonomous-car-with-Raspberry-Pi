@@ -1,6 +1,6 @@
 import numpy as np
 import cv2
-import utils
+from src.vision import image_utils as utils
 
 curveList = []
 avrgVal = 10

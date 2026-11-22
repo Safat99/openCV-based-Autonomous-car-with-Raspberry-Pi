@@ -1,6 +1,6 @@
-from motormodule import Motor
-import keyboardmodule as kp
-import WebcamModule
+from src.hardware.motor import Motor
+from src.hardware import keyboard as kp
+from src.vision import camera as WebcamModule
 
 
 motor = Motor(10,22,9,4,17,27)
